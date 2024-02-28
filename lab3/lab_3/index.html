@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Лабораторная работа 3 - Документация. Байков Иван. K33392</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Документация. Байков Иван. K33392</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../lab1/lab_1/" class="nav-link">Лабораторная работа 1</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../lab2/lab_2/" class="nav-link">Лабораторная работа 2</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Лабораторная работа 3</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../lab4/lab_4/" class="nav-link">Лабораторная работа 4</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../practical/pw-3.1/" class="nav-link">Практическая работа 3.1</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../lab2/lab_2/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../lab4/lab_4/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">Задание</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">Схема базы данных</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">Сериалайзеры</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#api-view" class="nav-link">API view</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#urls" class="nav-link">URLS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_4" class="nav-link">Примеры выполнения работы</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="_1">Задание</h1>
+<pre><code>Создать программную систему, предназначенную для работников библиотеки.
+Такая система должна обеспечивать хранение сведений об имеющихся в библиотеке
+книгах, о читателях библиотеки и читальных залах.
+Для каждой книги в БД должны храниться следующие сведения: название книги,
+автор (ы), издательство, год издания, раздел, число экземпляров этой книги в каждом зале
+библиотеки, а также шифр книги и дата закрепления книги за читателем. Книги могут
+перерегистрироваться в другом зале.
+Сведения о читателях библиотеки должны включать номер читательского билета,
+ФИО читателя, номер паспорта, дату рождения, адрес, номер телефона, образование,
+наличие ученой степени.
+Читатели закрепляются за определенным залом, могут переписаться в другой зал и
+могут записываться и выписываться из библиотеки.
+Библиотека имеет несколько читальных залов, которые характеризуются номером,
+названием и вместимостью, то есть количеством людей, которые могут одновременно
+работать в зале.
+Библиотека может получать новые книги и списывать старые. Шифр книги может
+измениться в результате переклассификации, а номер читательского билета в результате
+перерегистрации.
+</code></pre>
+<h2 id="_2">Схема базы данных</h2>
+<p><img alt="Результат" src="../images/1.jpg" /></p>
+<h2 id="_3">Сериалайзеры</h2>
+<pre><code class="language-python">from rest_framework import serializers
+
+from library_app.models import Book, Reader, Hall, Ownership, Availability
+
+
+class BookSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Book
+        fields = '__all__'
+
+class ReaderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reader
+        fields = '__all__'
+
+class HallSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Hall
+        fields = '__all__'
+
+class OwnershipSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ownership
+        fields = '__all__'
+
+class AvailabilitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Availability
+        fields = '__all__'
+
+
+class GoodBookSerializer(serializers.ModelSerializer):
+    halls = HallSerializer(many=True)
+    class Meta:
+        model = Book
+        fields = '__all__'
+
+
+</code></pre>
+<h2 id="api-view">API view</h2>
+<pre><code class="language-python">from django.shortcuts import render
+from rest_framework import generics, status, permissions
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from library_app.models import Book, Hall, Reader, Ownership, Availability
+from library_app.serializers import BookSerializer, HallSerializer, ReaderSerializer, OwnershipSerializer, \
+    AvailabilitySerializer, GoodBookSerializer
+
+
+class BookListView(generics.ListAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class BookRetrieveView(generics.RetrieveAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class BookCreateView(generics.CreateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class BookUpdateView(generics.UpdateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class BookDeleteView(generics.DestroyAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+
+
+class HallListView(generics.ListAPIView):
+    queryset = Hall.objects.all()
+    serializer_class = HallSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class HallRetrieveView(generics.RetrieveAPIView):
+    queryset = Hall.objects.all()
+    serializer_class = HallSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class HallCreateView(generics.CreateAPIView):
+    queryset = Hall.objects.all()
+    serializer_class = HallSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class HallUpdateView(generics.UpdateAPIView):
+    queryset = Hall.objects.all()
+    serializer_class = HallSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class HallDeleteView(generics.DestroyAPIView):
+    queryset = Hall.objects.all()
+    serializer_class = HallSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+
+
+class ReaderListView(generics.ListAPIView):
+    queryset = Reader.objects.all()
+    serializer_class = ReaderSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class ReaderRetrieveView(generics.RetrieveAPIView):
+    queryset = Reader.objects.all()
+    serializer_class = ReaderSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class ReaderCreateView(generics.CreateAPIView):
+    queryset = Reader.objects.all()
+    serializer_class = ReaderSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class ReaderUpdateView(generics.UpdateAPIView):
+    queryset = Reader.objects.all()
+    serializer_class = ReaderSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class ReaderDeleteView(generics.DestroyAPIView):
+    queryset = Reader.objects.all()
+    serializer_class = HallSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+
+
+class OwnershipListView(generics.ListAPIView):
+    queryset = Ownership.objects.all()
+    serializer_class = OwnershipSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class OwnershipRetrieveView(generics.RetrieveAPIView):
+    queryset = Ownership.objects.all()
+    serializer_class = OwnershipSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class OwnershipCreateView(generics.CreateAPIView):
+    queryset = Ownership.objects.all()
+    serializer_class = OwnershipSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class OwnershipUpdateView(generics.UpdateAPIView):
+    queryset = Ownership.objects.all()
+    serializer_class = OwnershipSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class OwnershipDeleteView(generics.DestroyAPIView):
+    queryset = Ownership.objects.all()
+    serializer_class = OwnershipSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+
+
+class AvailabilityListView(generics.ListAPIView):
+    queryset = Availability.objects.all()
+    serializer_class = AvailabilitySerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class AvailabilityRetrieveView(generics.RetrieveAPIView):
+    queryset = Availability.objects.all()
+    serializer_class = AvailabilitySerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class AvailabilityCreateView(generics.CreateAPIView):
+    queryset = Availability.objects.all()
+    serializer_class = AvailabilitySerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class AvailabilityUpdateView(generics.UpdateAPIView):
+    queryset = Availability.objects.all()
+    serializer_class = AvailabilitySerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class AvailabilityDeleteView(generics.DestroyAPIView):
+    queryset = Availability.objects.all()
+    serializer_class = AvailabilitySerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class LogOut(APIView):
+    def get(self, request, format=None):
+        request.user.auth_token.delete()
+        return Response(status=status.HTTP_200_OK)
+
+
+class GoodBookRetrieveView(generics.RetrieveAPIView):
+    queryset = Book.objects.all()
+    serializer_class = GoodBookSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+
+class AvailableBooks(generics.ListAPIView):
+
+    serializer_class = BookSerializer
+    permission_classes = [permissions.IsAuthenticated, ]
+    def get_queryset(self):
+       reader = self.kwargs['reader']
+       reader = Reader.objects.get(pk=reader)
+       books = reader.hall.books
+       return books
+</code></pre>
+<h2 id="urls">URLS</h2>
+<pre><code class="language-python">from django.urls import path, include
+from rest_framework.authtoken.views import obtain_auth_token
+from .views import *
+
+urlpatterns = [
+
+    path('books/all/', BookListView.as_view(), name='books_list'),
+    path('books/&lt;int:pk&gt;/', BookRetrieveView.as_view(), name='books_detail'),
+    path('books/create/', BookCreateView.as_view(), name='books_create'),
+    path('books/update/&lt;int:pk&gt;/', BookUpdateView.as_view(), name='books_update'),
+    path('books/delete/&lt;int:pk&gt;/', BookDeleteView.as_view(), name='books_delete'),
+
+    path('halls/all/', HallListView.as_view(), name='halls_list'),
+    path('halls/&lt;int:pk&gt;/', HallRetrieveView.as_view(), name='halls_detail'),
+    path('halls/create/', HallCreateView.as_view(), name='halls_create'),
+    path('halls/update/&lt;int:pk&gt;/', HallUpdateView.as_view(), name='halls_update'),
+    path('halls/delete/&lt;int:pk&gt;/', HallDeleteView.as_view(), name='halls_delete'),
+
+    path('readers/all/', ReaderListView.as_view(), name='readers_list'),
+    path('readers/&lt;int:pk&gt;/', ReaderRetrieveView.as_view(), name='readers_detail'),
+    path('readers/create/', ReaderCreateView.as_view(), name='readers_create'),
+    path('readers/update/&lt;int:pk&gt;/', ReaderUpdateView.as_view(), name='readers_update'),
+    path('readers/delete/&lt;int:pk&gt;/', ReaderDeleteView.as_view(), name='readers_delete'),
+
+    path('ownerships/all/', OwnershipListView.as_view(), name='ownerships_list'),
+    path('ownerships/&lt;int:pk&gt;/', OwnershipRetrieveView.as_view(), name='ownerships_detail'),
+    path('ownerships/create/', OwnershipCreateView.as_view(), name='ownerships_create'),
+    path('ownerships/update/&lt;int:pk&gt;/', OwnershipUpdateView.as_view(), name='ownerships_update'),
+    path('ownerships/delete/&lt;int:pk&gt;/', OwnershipDeleteView.as_view(), name='ownerships_delete'),
+
+    path('availabilities/all/', AvailabilityListView.as_view(), name='availabilities_list'),
+    path('availabilities/&lt;int:pk&gt;/', AvailabilityRetrieveView.as_view(), name='availabilities_detail'),
+    path('availabilities/create/', AvailabilityCreateView.as_view(), name='availabilities_create'),
+    path('availabilities/update/&lt;int:pk&gt;/', AvailabilityUpdateView.as_view(), name='availabilities_update'),
+    path('availabilities/delete/&lt;int:pk&gt;/', AvailabilityDeleteView.as_view(), name='availabilities_delete'),
+
+    path('good_book/&lt;int:pk&gt;/', GoodBookRetrieveView.as_view(), name='good_book'),
+    path('available_books/&lt;int:reader&gt;/', AvailableBooks.as_view(), name='available_books'),
+
+    path('auth/', include('djoser.urls')),
+    path('auth/token', obtain_auth_token, name='token'),
+    path('logout', LogOut.as_view()),
+]
+</code></pre>
+<h2 id="_4">Примеры выполнения работы</h2>
+<h3 id="_5">Авторизация пользователя</h3>
+<p><img alt="Результат" src="../images/2.jpg" /></p>
+<h3 id="_6">Получение токена</h3>
+<p><img alt="Результат" src="../images/3.jpg" /></p>
+<h3 id="id">Просмотр зала по id</h3>
+<p><img alt="Результат" src="../images/4.jpg" /></p>
+<h3 id="_7">Подробный просмотр книги с залами, в которых она доступна</h3>
+<p><img alt="Результат" src="../images/5.jpg" /></p>
+<h3 id="_8">Список доступных определенному читателю книг</h3>
+<p><img alt="Результат" src="../images/6.jpg" /></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
